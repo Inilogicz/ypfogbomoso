@@ -34,13 +34,21 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Program Registration</h2>
+      <form 
+        onSubmit={handleSubmit} 
+        className="w-full max-w-lg bg-white p-6 rounded-lg shadow-lg"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 text-center">Program Registration</h2>
         
         {/* Title */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Title *</label>
-          <select name="title" value={formData.title} onChange={handleChange} className="w-full p-2 border rounded">
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Title *</label>
+          <select 
+            name="title" 
+            value={formData.title} 
+            onChange={handleChange} 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          >
             <option>Mr</option>
             <option>Mrs</option>
             <option>Miss</option>
@@ -49,20 +57,37 @@ export default function Register() {
 
         {/* Name */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Name *</label>
-          <input name="name" value={formData.name} onChange={handleChange} required className="w-full p-2 border rounded" />
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Name *</label>
+          <input 
+            name="name" 
+            value={formData.name} 
+            onChange={handleChange} 
+            required 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          />
         </div>
 
         {/* Profession */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Profession *</label>
-          <input name="profession" value={formData.profession} onChange={handleChange} required className="w-full p-2 border rounded" />
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Profession *</label>
+          <input 
+            name="profession" 
+            value={formData.profession} 
+            onChange={handleChange} 
+            required 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          />
         </div>
 
         {/* Gender */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Gender *</label>
-          <select name="gender" value={formData.gender} onChange={handleChange} className="w-full p-2 border rounded">
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Gender *</label>
+          <select 
+            name="gender" 
+            value={formData.gender} 
+            onChange={handleChange} 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          >
             <option>Male</option>
             <option>Female</option>
           </select>
@@ -70,8 +95,13 @@ export default function Register() {
 
         {/* Marital Status */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Marital Status *</label>
-          <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} className="w-full p-2 border rounded">
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Marital Status *</label>
+          <select 
+            name="maritalStatus" 
+            value={formData.maritalStatus} 
+            onChange={handleChange} 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          >
             <option>Single</option>
             <option>Married</option>
           </select>
@@ -79,23 +109,46 @@ export default function Register() {
 
         {/* Phone Number */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Phone Number *</label>
-          <input name="phone" value={formData.phone} onChange={handleChange} required className="w-full p-2 border rounded" />
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Phone Number *</label>
+          <input 
+            name="phone" 
+            value={formData.phone} 
+            onChange={handleChange} 
+            required 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          />
         </div>
 
         {/* Place of Residence */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Place of Residence *</label>
-          <input name="residence" value={formData.residence} onChange={handleChange} required className="w-full p-2 border rounded" />
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Place of Residence *</label>
+          <input 
+            name="residence" 
+            value={formData.residence} 
+            onChange={handleChange} 
+            required 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          />
         </div>
 
         {/* Special Skills */}
         <div className="mb-4">
-          <label className="block text-black-700 text-sm font-bold mb-2">Special Skills</label>
-          <input name="skills" value={formData.skills} onChange={handleChange} className="w-full p-2 border rounded" />
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Special Skills</label>
+          <input 
+            name="skills" 
+            value={formData.skills} 
+            onChange={handleChange} 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          />
         </div>
 
-        <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Submit</button>
+        {/* Submit Button */}
+        <button 
+          type="submit" 
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
