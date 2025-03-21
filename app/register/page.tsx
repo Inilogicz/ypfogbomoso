@@ -6,17 +6,18 @@ import { useRouter } from "next/navigation";
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    title: "Mr",
+    title: "",
     name: "",
     profession: "",
-    gender: "Male",
-    maritalStatus: "Single",
+    gender: "",
+    maritalStatus: "",
     phone: "",
     email: "",
     residence: "",
     skills: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -25,11 +26,16 @@ export default function Register() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent duplicate submission
+
+    setIsSubmitting(true);
     try {
       await addDoc(collection(db, "registrations"), formData);
       router.push("/success");
     } catch (error) {
       console.error("Error submitting form: ", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -48,9 +54,10 @@ export default function Register() {
             name="title" 
             value={formData.title} 
             onChange={handleChange} 
+            required
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
-            <option value=""></option>
+            <option value="" disabled>Select Title</option>
             <option>Mr</option>
             <option>Mrs</option>
             <option>Miss</option>
@@ -88,9 +95,10 @@ export default function Register() {
             name="gender" 
             value={formData.gender} 
             onChange={handleChange} 
+            required
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
-            <option value=""></option>
+            <option value="" disabled>Select Gender</option>
             <option>Male</option>
             <option>Female</option>
           </select>
@@ -103,9 +111,10 @@ export default function Register() {
             name="maritalStatus" 
             value={formData.maritalStatus} 
             onChange={handleChange} 
+            required
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
-            <option value=""></option>
+            <option value="" disabled>Select Status</option>
             <option>Single</option>
             <option>Married</option>
           </select>
@@ -116,17 +125,20 @@ export default function Register() {
           <label className="block text-gray-800 text-sm font-semibold mb-1">Phone Number *</label>
           <input 
             name="phone" 
+            type="tel"
             value={formData.phone} 
             onChange={handleChange} 
             required 
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           />
         </div>
-        {/* Phone Number */}
+
+        {/* Email */}
         <div className="mb-4">
           <label className="block text-gray-800 text-sm font-semibold mb-1">Email *</label>
           <input 
             name="email" 
+            type="email"
             value={formData.email} 
             onChange={handleChange} 
             required 
@@ -148,7 +160,9 @@ export default function Register() {
 
         {/* Special Skills */}
         <div className="mb-4">
-          <label className="block text-gray-800 text-sm font-semibold mb-1">Special Skills(Something you aare good at outside your profession e.g baaking, sewing, etc)</label>
+          <label className="block text-gray-800 text-sm font-semibold mb-1">
+            Special Skills (e.g. baking, sewing, etc.)
+          </label>
           <input 
             name="skills" 
             value={formData.skills} 
@@ -160,9 +174,11 @@ export default function Register() {
         {/* Submit Button */}
         <button 
           type="submit" 
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+          disabled={isSubmitting}
+          className={`w-full font-bold py-2 px-4 rounded transition duration-300 
+          ${isSubmitting ? "bg-gray-400" : "bg-green-600 hover:bg-green-700 text-white"}`}
         >
-          Submit
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>

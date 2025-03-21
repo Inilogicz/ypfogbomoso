@@ -41,20 +41,21 @@ export default function Admin() {
     fetchAttendees();
   }, []);
 
-  // Function to export table as PDF
+  // Export Table as PDF
   const exportPDF = () => {
     const doc = new jsPDF();
+    doc.setFontSize(16);
     doc.text("Registered Attendees", 14, 10);
 
     const tableColumn = [
       "S/N",
       "Title",
       "Name",
+      "Email",
       "Profession",
       "Gender",
       "Marital Status",
       "Phone",
-      "Email",
       "Residence",
       "Skills",
     ];
@@ -62,11 +63,11 @@ export default function Admin() {
       index + 1,
       attendee.title,
       attendee.name,
+      attendee.email,
       attendee.profession,
       attendee.gender,
       attendee.maritalStatus,
       attendee.phone,
-      attendee.email,
       attendee.residence,
       attendee.skills || "N/A",
     ]);
@@ -75,6 +76,20 @@ export default function Admin() {
       head: [tableColumn],
       body: tableRows,
       startY: 20,
+      styles: { fontSize: 10, cellPadding: 3 },
+      columnStyles: {
+        0: { cellWidth: 10 }, // S/N
+        1: { cellWidth: 20 }, // Title
+        2: { cellWidth: 35 }, // Name
+        3: { cellWidth: 40 }, // Profession
+        4: { cellWidth: 20 }, // Gender
+        5: { cellWidth: 30 }, // Marital Status
+        6: { cellWidth: 30 }, // Phone
+        7: { cellWidth: 30 }, // Email
+        8: { cellWidth: 40 }, // Residence
+        9: { cellWidth: 40 }, // Skills
+      },
+      margin: { top: 30 },
     });
 
     doc.save("Registered_Attendees.pdf");
@@ -82,7 +97,7 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-green-800 mb-4 text-center">
+      <h1 className="text-3xl font-bold text-green-800 mb-6 text-center">
         Registered Attendees
       </h1>
 
@@ -104,19 +119,20 @@ export default function Admin() {
             </button>
           </div>
 
-          <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
+          {/* Table */}
+          <table className="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
             <thead className="bg-green-700 text-white">
               <tr>
-                <th className="px-4 py-2 text-left">S/N</th>
-                <th className="px-4 py-2 text-left">Title</th>
-                <th className="px-4 py-2 text-left">Name</th>
-                <th className="px-4 py-2 text-left">Profession</th>
-                <th className="px-4 py-2 text-left">Gender</th>
-                <th className="px-4 py-2 text-left">Marital Status</th>
-                <th className="px-4 py-2 text-left">Phone</th>
-                <th className="px-4 py-2 text-left">Email</th>
-                <th className="px-4 py-2 text-left">Residence</th>
-                <th className="px-4 py-2 text-left">Skills</th>
+                <th className="px-3 py-2 text-left border">S/N</th>
+                <th className="px-3 py-2 text-left border">Title</th>
+                <th className="px-3 py-2 text-left border">Name</th>
+                <th className="px-3 py-2 text-left border">Profession</th>
+                <th className="px-3 py-2 text-left border">Gender</th>
+                <th className="px-3 py-2 text-left border">Marital Status</th>
+                <th className="px-3 py-2 text-left border">Phone</th>
+                <th className="px-3 py-2 text-left border">Email</th>
+                <th className="px-3 py-2 text-left border">Residence</th>
+                <th className="px-3 py-2 text-left border">Skills</th>
               </tr>
             </thead>
             <tbody>
@@ -125,16 +141,16 @@ export default function Admin() {
                   key={attendee.id}
                   className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
                 >
-                  <td className="px-4 py-2 border">{index + 1}</td>
-                  <td className="px-4 py-2 border">{attendee.title}</td>
-                  <td className="px-4 py-2 border">{attendee.name}</td>
-                  <td className="px-4 py-2 border">{attendee.profession}</td>
-                  <td className="px-4 py-2 border">{attendee.gender}</td>
-                  <td className="px-4 py-2 border">{attendee.maritalStatus}</td>
-                  <td className="px-4 py-2 border">{attendee.phone}</td>
-                  <td className="px-4 py-2 border">{attendee.email}</td>
-                  <td className="px-4 py-2 border">{attendee.residence}</td>
-                  <td className="px-4 py-2 border">{attendee.skills || "N/A"}</td>
+                  <td className="px-3 py-2 border text-center">{index + 1}</td>
+                  <td className="px-3 py-2 border">{attendee.title}</td>
+                  <td className="px-3 py-2 border">{attendee.name}</td>
+                  <td className="px-3 py-2 border">{attendee.profession}</td>
+                  <td className="px-3 py-2 border">{attendee.gender}</td>
+                  <td className="px-3 py-2 border">{attendee.maritalStatus}</td>
+                  <td className="px-3 py-2 border">{attendee.phone}</td>
+                  <td className="px-3 py-2 border">{attendee.email}</td>
+                  <td className="px-3 py-2 border">{attendee.residence}</td>
+                  <td className="px-3 py-2 border">{attendee.skills || "N/A"}</td>
                 </tr>
               ))}
             </tbody>
