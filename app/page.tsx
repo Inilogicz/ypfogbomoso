@@ -6,7 +6,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-green-50 flex flex-col items-center text-center p-6">
       {/* Navbar */}
       <nav className="w-full flex justify-between items-center p-4 bg-green-800 text-white shadow-md">
-        <Image src="/ypfMAIN.jpg" alt="Event Logo" width={60} height={60} className="rounded-full" />
+        <Image src="/ypflogo.png" alt="Event Logo" width={60} height={60} className="rounded-full" />
         <h1 className="text-lg font-bold">Young Professional Forum</h1>
       </nav>
 

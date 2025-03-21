@@ -39,7 +39,7 @@ export default function Register() {
         
         {/* Title */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Title *</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Title *</label>
           <select name="title" value={formData.title} onChange={handleChange} className="w-full p-2 border rounded">
             <option>Mr</option>
             <option>Mrs</option>
@@ -49,19 +49,19 @@ export default function Register() {
 
         {/* Name */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Name *</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Name *</label>
           <input name="name" value={formData.name} onChange={handleChange} required className="w-full p-2 border rounded" />
         </div>
 
         {/* Profession */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Profession *</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Profession *</label>
           <input name="profession" value={formData.profession} onChange={handleChange} required className="w-full p-2 border rounded" />
         </div>
 
         {/* Gender */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Gender *</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Gender *</label>
           <select name="gender" value={formData.gender} onChange={handleChange} className="w-full p-2 border rounded">
             <option>Male</option>
             <option>Female</option>
@@ -70,7 +70,7 @@ export default function Register() {
 
         {/* Marital Status */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Marital Status *</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Marital Status *</label>
           <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} className="w-full p-2 border rounded">
             <option>Single</option>
             <option>Married</option>
@@ -79,19 +79,19 @@ export default function Register() {
 
         {/* Phone Number */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Phone Number *</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Phone Number *</label>
           <input name="phone" value={formData.phone} onChange={handleChange} required className="w-full p-2 border rounded" />
         </div>
 
         {/* Place of Residence */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Place of Residence *</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Place of Residence *</label>
           <input name="residence" value={formData.residence} onChange={handleChange} required className="w-full p-2 border rounded" />
         </div>
 
         {/* Special Skills */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Special Skills</label>
+          <label className="block text-black-700 text-sm font-bold mb-2">Special Skills</label>
           <input name="skills" value={formData.skills} onChange={handleChange} className="w-full p-2 border rounded" />
         </div>
 
