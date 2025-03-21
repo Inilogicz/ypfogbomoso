@@ -12,6 +12,7 @@ export default function Register() {
     gender: "Male",
     maritalStatus: "Single",
     phone: "",
+    email: "",
     residence: "",
     skills: "",
   });
@@ -49,6 +50,7 @@ export default function Register() {
             onChange={handleChange} 
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
+            <option value=""></option>
             <option>Mr</option>
             <option>Mrs</option>
             <option>Miss</option>
@@ -88,6 +90,7 @@ export default function Register() {
             onChange={handleChange} 
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
+            <option value=""></option>
             <option>Male</option>
             <option>Female</option>
           </select>
@@ -102,6 +105,7 @@ export default function Register() {
             onChange={handleChange} 
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
+            <option value=""></option>
             <option>Single</option>
             <option>Married</option>
           </select>
@@ -113,6 +117,17 @@ export default function Register() {
           <input 
             name="phone" 
             value={formData.phone} 
+            onChange={handleChange} 
+            required 
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          />
+        </div>
+        {/* Phone Number */}
+        <div className="mb-4">
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Email *</label>
+          <input 
+            name="email" 
+            value={formData.email} 
             onChange={handleChange} 
             required 
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
@@ -133,7 +148,7 @@ export default function Register() {
 
         {/* Special Skills */}
         <div className="mb-4">
-          <label className="block text-gray-800 text-sm font-semibold mb-1">Special Skills</label>
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Special Skills(Something you aare good at outside your profession e.g baaking, sewing, etc)</label>
           <input 
             name="skills" 
             value={formData.skills} 
