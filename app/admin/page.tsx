@@ -1,7 +1,8 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { db } from "../../lib/firebase-config";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
@@ -23,22 +24,16 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAttendees = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "registrations"));
-        const attendeesList = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as Attendee[];
-        setAttendees(attendeesList);
-      } catch (error) {
-        console.error("Error fetching attendees: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const unsubscribe = onSnapshot(collection(db, "registrations"), (snapshot) => {
+      const attendeesList = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Attendee[];
+      setAttendees(attendeesList);
+      setLoading(false);
+    });
 
-    fetchAttendees();
+    return () => unsubscribe();
   }, []);
 
   // Export Table as PDF
