@@ -15,11 +15,11 @@ export default function RegistrationForm() {
     skills: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await addDoc(collection(db, "users"), formData);
@@ -34,7 +34,7 @@ export default function RegistrationForm() {
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/3 px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Title</label>
-          <select name="title" value={formData.title} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3">
+          <select name="title" value={formData.title} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3">
             <option value="">Select</option>
             <option value="Mr">Mr</option>
             <option value="Mrs">Mrs</option>
@@ -43,21 +43,21 @@ export default function RegistrationForm() {
         </div>
         <div className="w-full md:w-2/3 px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Name</label>
-          <input name="name" value={formData.name} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3" type="text" placeholder="Full Name" required />
+          <input name="name" value={formData.name} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3" type="text" placeholder="Full Name" required />
         </div>
       </div>
       
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Profession</label>
-          <input name="profession" value={formData.profession} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3" type="text" placeholder="Your Profession" required />
+          <input name="profession" value={formData.profession} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3" type="text" placeholder="Your Profession" required />
         </div>
       </div>
       
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Gender</label>
-          <select name="gender" value={formData.gender} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3">
+          <select name="gender" value={formData.gender} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3">
             <option value="">Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -65,7 +65,7 @@ export default function RegistrationForm() {
         </div>
         <div className="w-full md:w-1/2 px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Marital Status</label>
-          <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3">
+          <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3">
             <option value="">Select</option>
             <option value="Single">Single</option>
             <option value="Married">Married</option>
@@ -76,26 +76,26 @@ export default function RegistrationForm() {
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Phone Number</label>
-          <input name="phone" value={formData.phone} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3" type="tel" placeholder="123-456-7890" required />
+          <input name="phone" value={formData.phone} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3" type="tel" placeholder="123-456-7890" required />
         </div>
       </div>
       
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Place of Residence</label>
-          <input name="residence" value={formData.residence} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3" type="text" placeholder="City, Country" required />
+          <input name="residence" value={formData.residence} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3" type="text" placeholder="City, Country" required />
         </div>
       </div>
       
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
           <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Special Skills</label>
-          <textarea name="skills" value={formData.skills} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded-30 py-2 px-3" placeholder="List your skills" required></textarea>
+          <textarea name="skills" value={formData.skills} onChange={handleChange} className="block w-full bg-gray-30 border border-green-50 rounded- py-2 px-3" placeholder="List your skills" required></textarea>
         </div>
       </div>
       
       <div className="w-full px-3">
-        <button type="submit" className="w-full bg-green-500 text-white font-bold py-2 p50 rounded-30 hover:bg-green-600">Submit</button>
+        <button type="submit" className="w-full bg-green-500 text-white font-bold py-2 p50 rounded- hover:bg-green-600">Submit</button>
       </div>
     </form>
   );
