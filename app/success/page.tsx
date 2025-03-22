@@ -11,7 +11,7 @@ export default function Success() {
         <a
           href="/Order%20of%20Programmes%20-%20Relationship%20and%20Marriage%20Matters,%2022nd%20March,%202025.pdf"
           download
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
         >
           Download Programme Sheet
         </a>

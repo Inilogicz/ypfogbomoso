@@ -1,9 +1,13 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function LandingPage() {
   return (
+    
     <div className="min-h-screen bg-green-50 flex flex-col items-center text-center p-6">
+      <Head><link rel="manifest" href="/manifest.json" />
+      </Head>
       {/* Navbar */}
       <nav className="w-full flex justify-between items-center p-4 bg-green-800 text-white shadow-md">
         <Image src="/ypflogo.png" alt="Event Logo" width={60} height={60} className="rounded-full" />

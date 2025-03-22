@@ -24,3 +24,28 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+table {
+  table-layout: auto; /* Allow table to expand */
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid gray; /* Ensure clear visibility */
+}
+
+thead {
+  background-color: #2f855a; /* Darker green */
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f3f4f6; /* Light gray */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}

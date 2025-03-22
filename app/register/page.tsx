@@ -15,6 +15,9 @@ export default function Register() {
     email: "",
     residence: "",
     skills: "",
+    mode:"",
+    whatsapp:"",
+
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -103,6 +106,21 @@ export default function Register() {
             <option>Female</option>
           </select>
         </div>
+        {/* Gender */}
+        <div className="mb-4">
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Audience Type *</label>
+          <select 
+            name="mode" 
+            value={formData.gender} 
+            onChange={handleChange} 
+            required
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          >
+            <option value="" disabled>Select Gender</option>
+            <option>online</option>
+            <option>Physical</option>
+          </select>
+        </div>
 
         {/* Marital Status */}
         <div className="mb-4">
@@ -117,6 +135,22 @@ export default function Register() {
             <option value="" disabled>Select Status</option>
             <option>Single</option>
             <option>Married</option>
+          </select>
+        </div>
+        {/* Marital Status */}
+        <div className="mb-4">
+          <label className="block text-gray-800 text-sm font-semibold mb-1">Would you like to be aded to the YPF Ogbomoso whatsapp group? *</label>
+          <select 
+            name="whatsapp" 
+            value={formData.maritalStatus} 
+            onChange={handleChange} 
+            required
+            className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
+          >
+            <option value="" disabled>Select Status</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Already added</option>
           </select>
         </div>
 
