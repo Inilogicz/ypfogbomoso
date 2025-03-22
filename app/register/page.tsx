@@ -111,7 +111,7 @@ export default function Register() {
           <label className="block text-gray-800 text-sm font-semibold mb-1">Audience Type *</label>
           <select 
             name="mode" 
-            value={formData.gender} 
+            value={formData.mode} 
             onChange={handleChange} 
             required
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
