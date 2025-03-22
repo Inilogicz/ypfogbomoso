@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { db } from "../../lib/firebase-config";
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
@@ -61,7 +61,7 @@ export default function Admin() {
       styles: { fontSize: 10, cellPadding: 3 },
       theme: "grid",
       margin: { top: 30 },
-      didDrawPage: function (data) {
+      didDrawPage: function () {
         doc.text(
           `Page ${doc.getNumberOfPages()}`,
           doc.internal.pageSize.width - 10,
