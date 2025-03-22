@@ -142,7 +142,7 @@ export default function Register() {
           <label className="block text-gray-800 text-sm font-semibold mb-1">Would you like to be aded to the YPF Ogbomoso whatsapp group? *</label>
           <select 
             name="whatsapp" 
-            value={formData.maritalStatus} 
+            value={formData.whatsapp} 
             onChange={handleChange} 
             required
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
