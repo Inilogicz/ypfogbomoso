@@ -38,6 +38,72 @@ export default function Admin() {
     return () => unsubscribe();
   }, []);
 
+  // ✅ Function to Export CSV
+  const exportToCSV = () => {
+    const headers = [
+      "S/N,Title,Name,Profession,Participation Type,Gender,Marital Status,Phone,Whatsapp Group,Email,Residence,Skills",
+    ];
+
+    const rows = attendees.map((attendee, index) => 
+      `${index + 1},"${attendee.title}","${attendee.name}","${attendee.profession}","${attendee.mode}","${attendee.gender}","${attendee.maritalStatus}","${attendee.phone}","${attendee.whatsapp}","${attendee.email}","${attendee.residence}","${attendee.skills || "N/A"}"`
+    );
+
+    const csvContent = headers.concat(rows).join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "attendees.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // ✅ Function to Export PDF
+  const exportToPDF = () => {
+    const doc = new jsPDF({
+      orientation: "landscape", // Set to landscape mode
+      unit: "mm",
+      format: "a4",
+    });
+  
+    doc.text("Relationship and Marriage Matters Registered Attendees", 14, 15);
+  
+    autoTable(doc, {
+      startY: 20,
+      head: [
+        [
+          "S/N", "Title", "Name", "Profession", "Participation Type", 
+          "Gender", "Marital Status", "Phone", "WhatsApp Group", 
+          "Email", "Residence", "Skills"
+        ]
+      ],
+      body: attendees.map((attendee, index) => [
+        index + 1,
+        attendee.title,
+        attendee.name,
+        attendee.profession,
+        attendee.mode,
+        attendee.gender,
+        attendee.maritalStatus,
+        attendee.phone,
+        attendee.whatsapp,
+        attendee.email,
+        attendee.residence,
+        attendee.skills || "N/A",
+      ]),
+      theme: "grid",
+      styles: { fontSize: 9 },
+      headStyles: { fillColor: [40, 167, 69] }, // Green color for header
+      alternateRowStyles: { fillColor: [240, 240, 240] }, // Light gray for alternate rows
+      margin: { top: 25 },
+    });
+  
+    doc.save("attendees_list.pdf");
+  };
+  
+
   return (
     <div className="min-h-screen bg-gray-100 p-6 font-sans antialiased">
       <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -52,11 +118,13 @@ export default function Admin() {
         <div className="overflow-x-auto">
           <div className="flex justify-end mb-4 space-x-2">
             <button
+              onClick={exportToPDF}
               className="px-4 py-2 bg-green-700 text-white font-semibold rounded hover:bg-green-800 transition"
             >
               Export to PDF
             </button>
             <button
+              onClick={exportToCSV}
               className="px-4 py-2 bg-blue-700 text-white font-semibold rounded hover:bg-blue-800 transition"
             >
               Export to CSV
