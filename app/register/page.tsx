@@ -116,7 +116,7 @@ export default function Register() {
             required
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
-            <option value="" disabled>Select Gender</option>
+            <option value="" disabled>Select Type</option>
             <option>online</option>
             <option>Physical</option>
           </select>
@@ -147,7 +147,7 @@ export default function Register() {
             required
             className="w-full p-2 border border-gray-300 bg-gray-50 rounded text-gray-900"
           >
-            <option value="" disabled>Select Status</option>
+            <option value="" disabled>Select </option>
             <option>Yes</option>
             <option>No</option>
             <option>Already added</option>
